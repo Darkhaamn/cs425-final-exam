@@ -1,4 +1,29 @@
-*.db
+# Binaries
 /server
 /student-records
+*.exe
+*.out
+
+# Test / coverage
+*.test
+*.cover
+coverage.*
+
+# Local databases
+*.db
+
+# Env / secrets
 .env
+.env.local
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Go workspace
+go.work
+go.work.sum
+
+
+.claude
