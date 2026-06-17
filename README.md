@@ -1,8 +1,10 @@
 # Prince University – Student Records RESTful API
 
+```
 **Name:** Darkhanbayar Erdenebat
 **Student ID:** 620283
 **Repository:** https://github.com/Darkhaamn/cs425-final-exam
+```
 
 ## Stack
 - **Go** + **Gin** (web framework)
