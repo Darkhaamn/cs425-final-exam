@@ -115,3 +115,7 @@ docker exec -it prince_pg psql -U prince -d student_records \
 
 **student_courses (join table)**
 ![student_courses table](screenshots/db/student_course.png)
+
+
+
+v1
