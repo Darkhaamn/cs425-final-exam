@@ -25,7 +25,7 @@ main.go      wires database -> repository -> service -> controller
 A `Student` can be registered to many `Course`s, and each `Course` can have
 many `Student`s — a many-to-many relationship (join table `student_courses`).
 
-![Domain model UML class diagram](diagrams/CS425-FinalExam.drawio.png)
+![Domain model UML class diagram](diagrams/CS425-FinalExam-drawio.png)
 
 ## Run
 
@@ -35,10 +35,14 @@ docker compose up -d db          # starts PostgreSQL (host port 5433 -> containe
 go run .                         # reads .env; API on http://localhost:8080
 ```
 
+![Running on localhost](screenshots/running%20local%20host.png)
+
 ### Option B — everything in Docker
 ```bash
 docker compose up --build        # db + api together; API on http://localhost:8080
 ```
+
+![Running on Docker](screenshots/running%20on%20docker.png)
 
 DB connection is configured via env vars (defaults in parentheses):
 `DB_HOST` (localhost), `DB_PORT` (5432), `DB_USER` (prince),
