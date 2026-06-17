@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: prince_pg
+    environment:
+      POSTGRES_USER: prince
+      POSTGRES_PASSWORD: prince
+      POSTGRES_DB: student_records
+    ports:
+      - '5433:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U prince -d student_records']
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    container_name: prince_api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: '5432'
+      DB_USER: prince
+      DB_PASSWORD: prince
+      DB_NAME: student_records
+      PORT: '8080'
+    ports:
+      - '8080:8080'
+
+volumes:
+  pgdata:
