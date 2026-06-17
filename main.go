@@ -23,7 +23,7 @@ func main() {
 	studentCtl := controller.NewStudentController(studentSvc)
 
 	r := gin.Default()
-	api := r.Group("/api")
+	api := r.Group("/api/v1")
 	studentCtl.RegisterRoutes(api)
 
 	port := os.Getenv("PORT")

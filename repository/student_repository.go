@@ -32,6 +32,12 @@ func (r *StudentRepository) FindHonorRoll() ([]model.Student, error) {
 	return students, err
 }
 
+func (r *StudentRepository) FindAllCourses() ([]model.Course, error) {
+	var courses []model.Course
+	err := r.db.Order("course_id asc").Find(&courses).Error
+	return courses, err
+}
+
 func (r *StudentRepository) FindCourse(courseID uint) (model.Course, error) {
 	var course model.Course
 	err := r.db.First(&course, courseID).Error

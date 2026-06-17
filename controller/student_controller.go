@@ -19,8 +19,18 @@ func NewStudentController(svc *service.StudentService) *StudentController {
 
 func (ctl *StudentController) RegisterRoutes(rg *gin.RouterGroup) {
 	rg.GET("/students", ctl.ListStudents)
-	rg.GET("/students/honor-roll", ctl.ListHonorRoll)
-	rg.POST("/students", ctl.Enroll)
+	rg.GET("/students/honorRoll", ctl.ListHonorRoll)
+	rg.POST("/students/enroll", ctl.Enroll)
+	rg.GET("/courses", ctl.ListCourses)
+}
+
+func (ctl *StudentController) ListCourses(c *gin.Context) {
+	courses, err := ctl.svc.ListCourses()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, courses)
 }
 
 func (ctl *StudentController) ListStudents(c *gin.Context) {

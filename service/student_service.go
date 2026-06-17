@@ -43,6 +43,10 @@ func (s *StudentService) ListHonorRoll() ([]model.StudentView, error) {
 	return toViews(students), nil
 }
 
+func (s *StudentService) ListCourses() ([]model.Course, error) {
+	return s.repo.FindAllCourses()
+}
+
 func (s *StudentService) Enroll(in EnrollInput) (model.StudentView, error) {
 	course, err := s.repo.FindCourse(in.CourseID)
 	if err != nil {
